@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 @Repository
 public class MemberRepository {
 
-    @Autowired
+    @PersistenceContext
     private EntityManager em;
 
     public Long save(Member member){
