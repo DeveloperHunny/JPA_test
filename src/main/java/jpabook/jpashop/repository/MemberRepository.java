@@ -1,27 +1,16 @@
 package jpabook.jpashop.repository;
 
+
 import jpabook.jpashop.domain.Member;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
-@Repository
-public class MemberRepository {
-
-    @PersistenceContext
-    private EntityManager em;
-
-    public Long save(Member member){
-        em.persist(member);
-        return member.getId();
-    }
-
-    public Member find(Long id){
-        return em.find(Member.class, id);
-
-    }
+import java.util.List;
+import java.util.Optional;
 
 
+public interface MemberRepository {
+    Member save(Member member);
+    Optional<Member> findById(Long id);
+    Optional<Member> findByName(String name);
+    List<Member> findAll();
 }
