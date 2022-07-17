@@ -20,4 +20,19 @@ public class Item {
     private Integer price;
     private Integer stockQuantity;
 
+    // === 비즈니스 로직 === //
+    public void addStock(int stockQuantity){
+        this.stockQuantity += stockQuantity;
+    }
+
+    public void reduceStock(int stockQuantity){
+        int restQuantity = this.stockQuantity - stockQuantity;
+
+        if(restQuantity < 0){
+            throw new IllegalStateException("재고량이 0보다 작습니다.");
+        }
+
+        this.stockQuantity = restQuantity;
+    }
+
 }

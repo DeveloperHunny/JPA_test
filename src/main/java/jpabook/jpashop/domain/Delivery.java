@@ -2,6 +2,7 @@ package jpabook.jpashop.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 
@@ -13,7 +14,7 @@ public class Delivery {
     @Column(name = "delivery_id")
     private Long id;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private Order order;
 
     @Embedded
